@@ -1,0 +1,156 @@
+Index CSS:
+
+```css
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+body,
+input,
+button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --button-text: white;
+  --blue: rgb(73, 86, 227);
+  --blue-light: rgb(73, 86, 227, 0.9);
+  --text-gray: rgb(31, 41, 55);
+  --text-gray-light: rgb(107, 114, 128);
+  --text-gray-lighter: rgb(229, 231, 235);
+  --text-gray-lightest: rgb(249, 250, 251);
+  --text-gray-dark: rgb(31, 41, 55);
+  --text-error: rgb(239, 68, 68);
+  --text-success: rgb(0, 110, 26);
+  --shadow-lg: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px
+      6px -4px rgb(0 0 0 / 0.1);
+}
+
+
+/* Main */
+.container {
+  margin: 2.5rem auto;
+  max-width: 1024px;
+}
+
+/* Button Component */
+.button {
+  cursor: pointer;
+  color: var(--button-text);
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  background-color: var(--blue);
+  border: solid 2px transparent;
+  border-radius: 0.125rem;
+  align-self: flex-start;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: var(--blue-light);
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+/* Input Field */
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: var(--text-gray-dark);
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 0.5rem;
+  color: var(--text-gray-light);
+  border: 2px solid var(--text-gray-lighter);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+}
+
+.input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.label .error {
+  color: var(--text-error);
+  margin-top: 0.5rem;
+  display: none;
+}
+
+[aria-invalid="true"] ~ .error {
+  display: inline-block;
+}
+
+/* Login Form */
+.legend {
+  color: var(--text-gray-dark);
+  margin-bottom: 1rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  padding: 0;
+}
+
+.fieldset {
+  border-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+  padding: 3rem;
+  margin: 0 auto;
+  background-color: var(--text-gray-lightest);
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.form .error {
+  color: var(--text-error);
+  margin-top: 0.5rem;
+}
+
+.form .success {
+  color: var(--text-success);
+  margin-top: 0.5rem;
+}
+
+/* Welcome */
+.welcome {
+  max-width: 640px;
+  padding: 3rem;
+  margin: 0 auto;
+  background-color: var(--text-gray-lightest);
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.welcome .header {
+  font-size: 1.5em;
+  font-weight: normal;
+  line-height: 2em;
+  margin: 0;
+}
+
+.welcome .button {
+  margin-top: 0.5rem;
+}
+```
