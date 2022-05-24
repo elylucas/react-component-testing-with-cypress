@@ -4,9 +4,12 @@
 
 Working dir:
 /Users/elylucas/projects/cypresstestapps/cypress-talks/ct-enablement/my-awesome-app
-Branch: start
+Branch: create new work branch
 
 ## Installing/Configuring Cypress
+
+Install: npm install
+https://cdn.cypress.io/beta/npm/10.0.0/darwin-x64/10.0-release-87f1ed8d5e580e57865f2d708b1ca00149edab2d/cypress.tgz
 
 Start cypress `npx cypress open`
 
@@ -178,7 +181,7 @@ function mount(InputField: JSX.Element) {
 Implement required login. First, make a test:
 
 ```tsx
-it('should show error if field if blank and form has been submitted', () => {
+it('should show error if field if is blank and form has been submitted', () => {
   mount(
     <InputField
       name="name"
@@ -189,15 +192,12 @@ it('should show error if field if blank and form has been submitted', () => {
     />
   );
 
-  cy.get('.error').should('exist');
+  cy.get('.error').should('be.visible');
 });
 ```
 
 Add submitted prop to InputField, use it in markup, update test, show it in
 runner
-
-Add test to show, show that test still fails because DOM exists, update test to
-"not.be.visible"
 
 ### Modularize CSS and show selector best practice
 
@@ -289,8 +289,9 @@ it('when input is modified, onChange should be called', () => {
 
   cy.get('input').type('abc123');
 
-  cy.get('@onChangeSpy').should('have.been.called', {
-    e: { target: { value: 'abc123 ' } },
+  cy.get('@onClickSpy').should((spy: any) => {
+    const args = spy.getCall(0).args;
+    expect(args[0].target.value).to.equal('abc123');
   });
   cy.get('input').and('contain.value', 'abc123');
 });
@@ -357,6 +358,7 @@ show tests pass.
   submitted
 - Form should not submit if its invalid
 - Should show bad username or password field for invalid credentials
+- Should show Welcome message for valid credentials
 
 ### Move LoginForm css to module
 
@@ -463,7 +465,7 @@ it('should show invalid username and password message when credentials are inval
   cy.contains('Password').find('input').type('badpassword');
   cy.get('button').contains('Login').click();
 
-  cy.contains('span', 'Bad username or password').should('not.be.visible');
+  cy.contains('div', 'Bad username or password').should('be.visible');
 });
 ```
 
@@ -478,7 +480,9 @@ const handleSubmit = (event: React.FormEvent) => {
   event.preventDefault();
   setSubmitted(true);
   setErrorMessage('');
-  login(username, password);
+  if (username && password) {
+    login(username, password);
+  }
 };
 
 const login = async (username: string, password: string) => {
@@ -523,7 +527,7 @@ it('should show welcome message when credentials are valid', () => {
   cy.contains('Password').find('input').type('testpassword');
   cy.get('button').contains('Login').click();
 
-  cy.contains('Welcome testuser!').should('be.visible');
+  cy.contains('div', 'Welcome testuser!').should('be.visible');
 });
 ```
 

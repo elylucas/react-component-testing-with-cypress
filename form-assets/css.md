@@ -133,24 +133,4 @@ button {
   margin-top: 0.5rem;
 }
 
-/* Welcome */
-.welcome {
-  max-width: 640px;
-  padding: 3rem;
-  margin: 0 auto;
-  background-color: var(--text-gray-lightest);
-  border-radius: 0.375rem;
-  box-shadow: var(--shadow-lg);
-}
-
-.welcome .header {
-  font-size: 1.5em;
-  font-weight: normal;
-  line-height: 2em;
-  margin: 0;
-}
-
-.welcome .button {
-  margin-top: 0.5rem;
-}
 ```

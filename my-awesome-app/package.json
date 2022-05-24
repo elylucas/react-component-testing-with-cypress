@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "cypress": "https://cdn.cypress.io/beta/npm/10.0.0/darwin-x64/10.0-release-d1d337a075c613ebfe765c6562d5e5e894f78261/cypress.tgz",
+    "msw": "^0.41.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -18,5 +18,8 @@
     "@vitejs/plugin-react": "^1.3.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.9"
+  },
+  "msw": {
+    "workerDirectory": "."
   }
 }
