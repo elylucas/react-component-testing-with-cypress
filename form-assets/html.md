@@ -36,12 +36,3 @@ Login Form:
   </fieldset>
 </form>
 ```
-
-Welcome Page:
-
-```html
-<div class="welcome">
-  <h1 class="header">Welcome Username!</h1>
-  <button class="button">Log Out</button>
-</div>
-```
