@@ -15,6 +15,8 @@ Start cypress `npx cypress open`
 
 Go through config wizard
 
+Talking Points: mention framework support, how its in beta, show off new UI
+
 ## LoginForm
 
 Before creating a spec, create `components/LoginForm.tsx` with a simple Test
