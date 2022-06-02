@@ -16,59 +16,44 @@ Start cypress `npx cypress open`
 Go through config wizard
 
 Talking Points: mention framework support, how its in beta, show off new UI
+Talking Point: Ely: And thats it, CT is now configured and ready to use
 
 ## LoginForm
 
-Before creating a spec, create `components/LoginForm.tsx` with a simple Test
-div.
+Before creating a spec, show `components/LoginForm.tsx` with html.
 
 Create spec with UI, show red squigglies and how to add "cypress" to includes in
 tsconfig to get rid of them. Mention that in libs that include Jest the types
 for 'describe' and 'it' might be wrong and point to docs.
 
-Import the html and convert to React.
-
 Update the test to mount <LoginForm>, show how it doesn’t load css
 
-Paste in global config to index.css and import support/component.ts. Import font
-in index.html.
+Import index.css to support/component.ts. Import font in index.html.
 
 Show how font is still off, import font in component-index.html
 
-Configure a viewPortWidth of 700 and show how browser reloads from config
-change.
+Talking Point: Its cool that you are able to work on the component while you are
+testing it. Usually you would need to have this component loaded in some page to
+make these types of changes.
 
 ## Button
+
+Talking point: Ely: Ok, lets start breaking this down into components. Jonathan:
+Sure, but before we start, could you explain to me what a component is? Ely:
+sure....
+
+Talking Point: Ely: Ok lets create a button components, Jonathan, whats our
+requirements for the button Jonathan:
 
 - Button requirements:
   - Displays custom text
   - When clicked calls an click method
 
-Create Button.tsx and **cut** and paste in button from LoginForm
-
 Create spec and mount button, show it works.
 
-### Button CSS
+Create Button.tsx and **cut** and paste in button from LoginForm
 
-Componitize the css using css modules, copy button css to Button.module.css and
-update Button to use it
-
-```tsx
-import React from 'react';
-import styles from './Button.module.css';
-
-interface ButtonProps {}
-
-const Button: React.FC<ButtonProps> = () => {
-  return (
-    <button type="submit" className={styles.button}>
-      Login
-    </button>
-  );
-};
-
-export default Button;
-```
+Componitize the css using css modules.
 
 ### 1st Button test, uses custom text
 
@@ -83,8 +68,14 @@ it('uses custom text for the button label', () => {
 
 Show test fail
 
-Add children to button and use it, update the props to inherit from
-`React.ButtonHTMLAttributes<HTMLButtonElement>` and show it working
+Talking Point: So the API you are using here is pretty much the same as the
+end-to-end api? Me: Yes, the biggest difference here is I'm using cy.mount
+instead of cy.visit, pretty much how you interact with the rendered output is
+the same in CT as in e2e.
+
+Add children to button and use it, point out how the the props inherit from
+`React.ButtonHTMLAttributes<HTMLButtonElement>` so our button acts like a native
+button.
 
 Show how the first test is rendering a button with no text. Make the children
 required by adding `children: React.ReactNode` to ButtonProps
@@ -125,13 +116,18 @@ Add `<Button />` to form and show test passing
 
 ## InputField
 
+Talking Point: Ok, lets move on to turning these input fields into reusable
+components. Jonathan, what requirements do we have for them?
+
 - Requirements
-- Shows a required message only when the form is submitted and there is no value
+- Has a custom label
+- Has a custom required message
+- Required message only shows when the form is submitted and there is no value
 
 ### Make InputField.tsx and first spec
 
-Make Inputfield.tsx, **cut** login field out and put it in file, replace all
-text pieces with props
+Past login field into LoginField.tsx file, replace all text pieces with props.
+Spread props across input and take away type attribute.
 
 ```tsx
 import React from 'react';
@@ -178,6 +174,9 @@ function mount(InputField: JSX.Element) {
 }
 ```
 
+Talking Point: Oh cool, so you can configure and setup the test frame to display
+in a way your component actually will.
+
 ### 1st InputField test, required login message
 
 Implement required login. First, make a test:
@@ -203,13 +202,17 @@ runner
 
 ### Modularize CSS and show selector best practice
 
-OOPS, forgot to import module css, do it.
+Talking Point: OOPS, forgot to import module css, lets do it.
 
 Test now fails because .error class is renamed by module css, explain why
 
-Fix selector `cy.contains('span', 'Name is required').should('be.visible')`
+Fix selector `cy.contains('Name is required').should('be.visible')`
 
-### 2nd InputField test,
+Talking Point: So this seems likes a great case for Cypress Component testing,
+in which you can use the browser dev tools to debug and troubleshoot your code
+Ely: Yep, not only that, you can debug your component code as well
+
+### 2nd InputField test
 
 Should not show error when field has not been submitted and there is not value
 
@@ -291,27 +294,12 @@ it('when input is modified, onChange should be called', () => {
 
   cy.get('input').type('abc123');
 
-  cy.get('@onClickSpy').should((spy: any) => {
+  cy.get('@onChangeSpy').should((spy: any) => {
     const args = spy.getCall(0).args;
     expect(args[0].target.value).to.equal('abc123');
   });
   cy.get('input').and('contain.value', 'abc123');
 });
-```
-
-Explain how passing an object to have been called does a shallow compare.
-
-Show test fail.
-
-Spread props across input field, and take away type:
-
-```tsx
-<input
-  className={styles.input}
-  aria-invalid={submitted && !props.value}
-  aria-errormessage={`error-${props.name}`}
-  {...props}
-/>
 ```
 
 ### Add Inputfields to LoginForm
@@ -355,6 +343,9 @@ show tests pass.
 
 ## LoginForm Logic
 
+Talking point: Ely: Ok, now that we have the LoginForm whole again, lets
+continue with working out the logic for the actual form, whats our requirements?
+
 - Requirements
 - Fields should show validation message if fields are blank and form is
   submitted
@@ -364,7 +355,7 @@ show tests pass.
 
 ### Move LoginForm css to module
 
-you know the drill, do it
+you know the drill, do it. Remove any lingering css from index.css.
 
 ### 1st LoginForm test
 
@@ -472,6 +463,15 @@ it('should show invalid username and password message when credentials are inval
 ```
 
 Show test fail.
+
+Talking Point: Jonathan: So here, we should call the auth api to check if the
+username or password is valid. The backend team is still working on the API, but
+they have gave us what the calls will look like Ely: Oh ya, whats that?
+Jonathan: If we post to the auth endpoint with a json object containing the
+username and password, it will return with a 200 status code if the credentials
+are valid, and a 401 status code if they are not Ely: Cool, lets use the
+cy.intercept method which will let us write component against the real api, but
+in the tests we can mock it.
 
 Add login method, errorMessageState, call login from handleSubmit:
 
