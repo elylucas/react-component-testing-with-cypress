@@ -8,9 +8,7 @@ Branch: create new work branch
 
 ## Installing/Configuring Cypress
 
-Install: npm install
-https://cdn.cypress.io/beta/npm/10.0.0/darwin-x64/10.0-release-87f1ed8d5e580e57865f2d708b1ca00149edab2d/cypress.tgz
-
+Install: `npm i -D cypress`
 Start cypress `npx cypress open`
 
 Go through config wizard
@@ -32,7 +30,7 @@ Import index.css to support/component.ts. Import font in index.html.
 
 Show how font is still off, import font in component-index.html
 
-Talking Point: Its cool that you are able to work on the component while you are
+Talking Point: Jonathan: Its cool that you are able to work on the component while you are
 testing it. Usually you would need to have this component loaded in some page to
 make these types of changes.
 
@@ -68,11 +66,6 @@ it('uses custom text for the button label', () => {
 
 Show test fail
 
-Talking Point: So the API you are using here is pretty much the same as the
-end-to-end api? Me: Yes, the biggest difference here is I'm using cy.mount
-instead of cy.visit, pretty much how you interact with the rendered output is
-the same in CT as in e2e.
-
 Add children to button and use it, point out how the the props inherit from
 `React.ButtonHTMLAttributes<HTMLButtonElement>` so our button acts like a native
 button.
@@ -81,6 +74,13 @@ Show how the first test is rendering a button with no text. Make the children
 required by adding `children: React.ReactNode` to ButtonProps
 
 Update tests to compile
+
+show pass
+
+Talking Point: So the API you are using here is pretty much the same as the
+end-to-end api? Me: Yes, the biggest difference here is I'm using cy.mount
+instead of cy.visit, pretty much how you interact with the rendered output is
+the same in CT as in e2e.
 
 ### Button should emit an onClick event
 
@@ -208,9 +208,9 @@ Test now fails because .error class is renamed by module css, explain why
 
 Fix selector `cy.contains('Name is required').should('be.visible')`
 
-Talking Point: So this seems likes a great case for Cypress Component testing,
+Talking Point: Jonathan: So this seems likes a great case for Cypress Component testing,
 in which you can use the browser dev tools to debug and troubleshoot your code
-Ely: Yep, not only that, you can debug your component code as well
+Ely: Yep, not only that, you can debug your component code as well, lets check that out in the next test
 
 ### 2nd InputField test
 
@@ -265,7 +265,7 @@ it('should NOT show error if there is a value and form has been submitted', () =
       label="Name"
       requiredMessage="Name is required"
       value={'abc123'}
-      submitted={false}
+      submitted={true}
     />
   );
 
@@ -286,7 +286,7 @@ it('when input is modified, onChange should be called', () => {
       name="name"
       label="Name"
       requiredMessage="Name is required"
-      value={'abc123'}
+      value={''}
       submitted={false}
       onChange={cy.spy().as('onChangeSpy')}
     />
@@ -298,7 +298,7 @@ it('when input is modified, onChange should be called', () => {
     const args = spy.getCall(0).args;
     expect(args[0].target.value).to.equal('abc123');
   });
-  cy.get('input').and('contain.value', 'abc123');
+  cy.get('input').should('contain.value', 'abc123');
 });
 ```
 
@@ -349,7 +349,6 @@ continue with working out the logic for the actual form, whats our requirements?
 - Requirements
 - Fields should show validation message if fields are blank and form is
   submitted
-- Form should not submit if its invalid
 - Should show bad username or password field for invalid credentials
 - Should show Welcome message for valid credentials
 
