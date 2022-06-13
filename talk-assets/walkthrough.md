@@ -26,14 +26,16 @@ for 'describe' and 'it' might be wrong and point to docs.
 
 Update the test to mount <LoginForm>, show how it doesn’t load css
 
+Talking Point: Jonathan: Cool, but it looks like a basic html form, how do we
+get this to display the way we want it to
+
 Import index.css to support/component.ts. Import font in index.html.
 
 Show how font is still off, import font in component-index.html
 
-Talking Point: Jonathan: Its cool that you are able to work on the component while you are
-testing it. Usually you would need to have this component loaded in some page to
-make these types of changes.
-
+Talking Point: Jonathan:
+- show off dev tools
+- working on LoginForm before any other part of web app is ready
 ## Button
 
 Talking point: Ely: Ok, lets start breaking this down into components. Jonathan:
@@ -50,6 +52,9 @@ requirements for the button Jonathan:
 Create spec and mount button, show it works.
 
 Create Button.tsx and **cut** and paste in button from LoginForm
+
+Talking Point:
+- where is the css coming from?
 
 Componitize the css using css modules.
 
@@ -116,14 +121,6 @@ Add `<Button />` to form and show test passing
 
 ## InputField
 
-Talking Point: Ok, lets move on to turning these input fields into reusable
-components. Jonathan, what requirements do we have for them?
-
-- Requirements
-- Has a custom label
-- Has a custom required message
-- Required message only shows when the form is submitted and there is no value
-
 ### Make InputField.tsx and first spec
 
 Past login field into LoginField.tsx file, replace all text pieces with props.
@@ -177,6 +174,11 @@ function mount(InputField: JSX.Element) {
 Talking Point: Oh cool, so you can configure and setup the test frame to display
 in a way your component actually will.
 
+Talking Point:  Jonathan, what requirements do we have for them?
+
+- Requirements
+- Required message only shows when the form is submitted and there is no value
+
 ### 1st InputField test, required login message
 
 Implement required login. First, make a test:
@@ -208,9 +210,10 @@ Test now fails because .error class is renamed by module css, explain why
 
 Fix selector `cy.contains('Name is required').should('be.visible')`
 
-Talking Point: Jonathan: So this seems likes a great case for Cypress Component testing,
-in which you can use the browser dev tools to debug and troubleshoot your code
-Ely: Yep, not only that, you can debug your component code as well, lets check that out in the next test
+Talking Point: Jonathan: So this seems likes a great case for Cypress Component
+testing, in which you can use the browser dev tools to debug and troubleshoot
+your code Ely: Yep, not only that, you can debug your component code as well,
+lets check that out in the next test
 
 ### 2nd InputField test
 
