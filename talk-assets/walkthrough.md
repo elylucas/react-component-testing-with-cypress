@@ -577,4 +577,10 @@ beforeEach(() => {
 });
 ```
 
+## Heres what we saw:
+- How to set up cypress in a new project with CT
+- Differences between e2e and CT
+- How to test a component in isolation
+- How CT can help your overall dev workflow
+
 ## Done!
