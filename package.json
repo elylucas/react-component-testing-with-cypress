@@ -1,0 +1,14 @@
+{
+  "name": "workshop-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "guide": "path-exists guide && echo 'guide already cloned' || git clone -b guide git@github.com:path/to/guide guide && path-exists ./guide/node_modules && echo 'guide deps already installed' || npm --prefix ./guide install && npm --prefix ./guide run serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "path-exists-cli": "^2.0.0"
+  }
+}
