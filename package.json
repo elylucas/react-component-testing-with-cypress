@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "guide": "path-exists guide && echo 'guide already cloned' || git clone -b guide git@github.com:elylucas/workshop-starter.git guide && path-exists ./guide/node_modules && echo 'guide deps already installed' || npm --prefix ./guide install && npm --prefix ./guide run build && npm --prefix ./guide run serve"
+    "guide": "path-exists guide && echo 'guide already cloned' || git clone -b guide git@github.com:elylucas/workshop-starter.git guide && path-exists ./guide/node_modules && echo 'guide deps already installed' || npm --prefix ./guide install && npm --prefix ./guide run serve"
   },
   "author": "",
   "license": "ISC",
