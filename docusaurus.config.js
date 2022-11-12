@@ -9,7 +9,7 @@ const config = {
   title: 'New Workshop site',
   tagline: 'workshops are cool',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/workshop-starter/' : '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -54,7 +54,7 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
-      },      
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
