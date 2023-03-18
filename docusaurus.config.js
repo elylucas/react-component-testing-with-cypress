@@ -9,7 +9,10 @@ const config = {
   title: 'New Workshop site',
   tagline: 'workshops are cool',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: process.env.NODE_ENV === 'production' ? '/workshop-starter/' : '/',
+  baseUrl:
+    process.env.NODE_ENV === 'production'
+      ? '/react-component-testing-with-cypress/'
+      : '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
