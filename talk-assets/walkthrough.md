@@ -276,12 +276,11 @@ Add test:
 
 ```tsx
 it('when input is modified, onChange should be called', () => {
-  mount(
+  cy.mount(
     <InputField
       name="name"
       label="Name"
       requiredMessage="Name is required"
-      value={'abc123'}
       submitted={false}
       onChange={cy.spy().as('onChangeSpy')}
     />
@@ -289,11 +288,14 @@ it('when input is modified, onChange should be called', () => {
 
   cy.get('input').type('abc123');
 
-  cy.get('@onClickSpy').should((spy: any) => {
-    const args = spy.getCall(0).args;
-    expect(args[0].target.value).to.equal('abc123');
+  // cy.get('@onChangeSpy').should((spy: any) => {
+  //   const args = spy.getCall(0).args;
+  //   expect(args[0].target.value).to.equal('abc123');
+  // });
+  cy.get('@onChangeSpy').should('have.been.calledWithMatch', {
+    target: { value: 'abc123' },
   });
-  cy.get('input').and('contain.value', 'abc123');
+  cy.get('input').should('contain.value', 'abc123');
 });
 ```
 
@@ -480,21 +482,21 @@ const handleSubmit = (event: React.FormEvent) => {
   event.preventDefault();
   setSubmitted(true);
   setErrorMessage('');
-  if (username && password) {
-    login(username, password);
-  }
+  login();
 };
 
-const login = async (username: string, password: string) => {
-  const res = await fetch('/auth', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password }),
-  });
-  if (res.status === 401) {
-    setErrorMessage('Bad username or password');
-  }
-};
+  const login = async () => {
+    if (username && password) {
+      const res = await fetch('/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      if (res.status === 401) {
+        setErrorMessage('Bad username or password');
+      }
+    }
+  };
 
 {
   errorMessage && <div className={styles.error}>{errorMessage}</div>;

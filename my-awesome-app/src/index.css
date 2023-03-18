@@ -1,0 +1,43 @@
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+body,
+input,
+button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --button-text: white;
+  --blue: rgb(73, 86, 227);
+  --blue-light: rgb(73, 86, 227, 0.9);
+  --text-gray: rgb(31, 41, 55);
+  --text-gray-light: rgb(107, 114, 128);
+  --text-gray-lighter: rgb(229, 231, 235);
+  --text-gray-lightest: rgb(249, 250, 251);
+  --text-gray-dark: rgb(31, 41, 55);
+  --text-error: rgb(239, 68, 68);
+  --text-success: rgb(0, 110, 26);
+  --shadow-lg: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px
+      6px -4px rgb(0 0 0 / 0.1);
+}
+
+
+/* Main */
+.container {
+  margin: 2.5rem auto;
+  max-width: 1024px;
+}
+
+
+
