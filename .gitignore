@@ -1,6 +1,5 @@
 # Code folders
-/client
-/server
+/app
 
 # Dependencies
 /node_modules
