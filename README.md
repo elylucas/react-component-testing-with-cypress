@@ -5,7 +5,7 @@ Welcome to the Workshop!
 ## Getting Started
 
 To get started, open the guide at
-[https://elylucas.github.io/workshop-starter/](https://elylucas.github.io/workshop-starter/)
+[https://elylucas.github.io/react-component-testing-with-cypress/](https://elylucas.github.io/react-component-testing-with-cypress/)
 and continue in the Getting Started section.
 
 If you cannot access the above URL, you can view the guide locally by running
