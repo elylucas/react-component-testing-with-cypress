@@ -9,7 +9,7 @@
     "id": "489329",
     "name": "Button test - onclick should be called",
     "type": "CodeFragment",
-    "content": "it('when button is clicked, onClick should be called', () => {\n    cy.mount(<Button>Click me!</Button>);\n  });"
+    "content": "it('when button is clicked, onClickx should be called', () => {\n    cy.mount(<Button>Click me!</Button>);\n  });"
   },
   {
     "id": "401607",
@@ -33,7 +33,7 @@
     "id": "348676",
     "name": "InputField Test - should NOT show error when no value and not submitted",
     "type": "CodeFragment",
-    "content": "it('should NOT show error if there is no value and form has NOT been submitted', () => {\n    cy.mount(\n      <InputField\n        name=\"username\"\n        label=\"Username\"\n        requiredMessage=\"Username is required\"\n        value={''}\n        submitted={false}\n      />\n    );\n    cy.getErrorMessageFor('Username').should('not.exist');\n  });"
+    "content": "it('should NOT show error if there is no value and form has NOT been submitted', () => {\n    cy.mount(\n      <InputField\n        name=\"username\"\n        label=\"Username\"\n        requiredMessage=\"Username is required\"\n        value={''}\n        submitted={false}\n      />\n    );\n    cy.getErrorMessageFor('Username').should('not.be.visible');\n  });"
   },
   {
     "id": "314389",
@@ -106,5 +106,11 @@
     "name": "cy.intercept 401",
     "type": "CodeFragment",
     "content": "cy.intercept('POST', '/auth', {\n      statusCode: 401\n    })"
+  },
+  {
+    "id": "492315",
+    "name": "LoginForm Test - should show welcome msg",
+    "type": "CodeFragment",
+    "content": "  it('should show welcome message when credentials are valid', () => {\n    cy.intercept('POST', '/auth', {\n      statusCode: 200,\n    });\n\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    cy.contains('Welcome testuser!').should('be.visible');\n  });"
   }
 ]
