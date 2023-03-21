@@ -1,0 +1,110 @@
+[
+  {
+    "id": "328512",
+    "name": "Button Test - uses custom text",
+    "type": "CodeFragment",
+    "content": "it('uses custom text for the button label', () => {\n\n  });"
+  },
+  {
+    "id": "489329",
+    "name": "Button test - onclick should be called",
+    "type": "CodeFragment",
+    "content": "it('when button is clicked, onClick should be called', () => {\n    cy.mount(<Button>Click me!</Button>);\n  });"
+  },
+  {
+    "id": "401607",
+    "name": "LoginForm - button exists",
+    "type": "CodeFragment",
+    "content": "it('form should have button with login text', () => {\n    cy.mount(<LoginForm />);\n    \n  });"
+  },
+  {
+    "id": "503127",
+    "name": "InputField Test - show show error",
+    "type": "CodeFragment",
+    "content": "it('should show error if field if is blank and form has been submitted', () => {\n    cy.mount(\n      <InputField\n        name=\"username\"\n        label=\"Username\"\n        requiredMessage=\"Username is required\"\n      />\n    );\n\n  });"
+  },
+  {
+    "id": "315858",
+    "name": "getErrorMessageFor func",
+    "type": "CodeFragment",
+    "content": "function getErrorMessageFor(label: string) {\n  return cy.contains('label', label).then((label) => {\n    const htmlFor = label.attr('for');\n    if (htmlFor) {\n      cy.get(`input#${htmlFor}`).as('input');\n    } else {\n      cy.wrap(label).find('input').as('input');\n    }\n    cy.get('@input')\n      .invoke('attr', 'aria-errormessage')\n      .then((value) => {\n        return cy.get(`#${value}`);\n      });\n  });\n}"
+  },
+  {
+    "id": "348676",
+    "name": "InputField Test - should NOT show error when no value and not submitted",
+    "type": "CodeFragment",
+    "content": "it('should NOT show error if there is no value and form has NOT been submitted', () => {\n    cy.mount(\n      <InputField\n        name=\"username\"\n        label=\"Username\"\n        requiredMessage=\"Username is required\"\n        value={''}\n        submitted={false}\n      />\n    );\n    cy.getErrorMessageFor('Username').should('not.exist');\n  });"
+  },
+  {
+    "id": "314389",
+    "name": "InputField Test - should NOT show error if value and submitted",
+    "type": "CodeFragment",
+    "content": "it('should NOT show error if there is a value and form has been submitted', () => {\n    cy.mount(\n      <InputField\n        name=\"username\"\n        label=\"Username\"\n        requiredMessage=\"Username is required\"\n        value={'abc123'}\n        submitted={true}\n      />\n    );\n\n    cy.getErrorMessageFor('Username').should('not.be.visible');\n  });"
+  },
+  {
+    "id": "408442",
+    "name": "InputField Test - onChange should be called ",
+    "type": "CodeFragment",
+    "content": "it('when input is modified, onChange should be called', () => {\n    cy.mount(\n      <InputField\n        name=\"username\"\n        label=\"Username\"\n        requiredMessage=\"Username is required\"\n        value={'abc123'}\n        submitted={false}\n        onChange={cy.spy().as('onChangeSpy')}\n      />\n    );\n\n  });"
+  },
+  {
+    "id": "514080",
+    "name": "getInputFor func",
+    "type": "CodeFragment",
+    "content": "function getInputFor(label: string) {\n  return cy.contains('label', label).then((label) => {\n    const htmlFor = label.attr('for');\n    if (htmlFor) {\n      return cy.get(`input#${htmlFor}`);\n    } else {\n      return cy.wrap(label).find('input');\n    }\n  });\n}"
+  },
+  {
+    "id": "300370",
+    "name": "onChangeSpy check",
+    "type": "CodeFragment",
+    "content": "cy.get('@onChangeSpy').should((spy: any) => {\n      const args = spy.getCall(0).args;\n      expect(args[0].target.value).to.equal('abc123');\n    });"
+  },
+  {
+    "id": "506432",
+    "name": "LoginForm Test - form should have inputs",
+    "type": "CodeFragment",
+    "content": "it('form should have username and password inputs', () => {\n    cy.mount(<LoginForm />);\n    cy.get('input[type=text]')\n      .should('have.attr', 'name')\n      .and('equal', 'username');\n    cy.get('input[type=password]')\n      .should('have.attr', 'name')\n      .and('equal', 'password');\n  });"
+  },
+  {
+    "id": "349115",
+    "name": "Add InputFields to form",
+    "type": "CodeFragment",
+    "content": "<InputField\n          name=\"username\"\n          label=\"Username\"\n          requiredMessage=\"Username is required\"\n          type=\"text\"\n          submitted={false}\n        />\n        <InputField\n          name=\"password\"\n          label=\"Password\"\n          requiredMessage=\"Password is required\"\n          type=\"password\"\n          submitted={false}\n        />"
+  },
+  {
+    "id": "523097",
+    "name": "LoginForm Test - fields should show val msgs when submitted",
+    "type": "CodeFragment",
+    "content": "it('fields should show validation messages if they are blank and form is submitted', () => {\n    cy.mount(<LoginForm />);\n    cy.get('button').contains('Login').click();\n    cy.getErrorMessageFor('Username').should('be.visible');\n    cy.getErrorMessageFor('Password').should('be.visible');\n  });"
+  },
+  {
+    "id": "433398",
+    "name": "handleSubmit func",
+    "type": "CodeFragment",
+    "content": "const handleSubmit = (event: React.FormEvent) => {\n    event.preventDefault();\n  };"
+  },
+  {
+    "id": "351905",
+    "name": "LoginForm Test - should NOT show val msgs if values and submitted",
+    "type": "CodeFragment",
+    "content": "it('should NOT show validation messages if inputs have value and form is submitted', () => {\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    cy.getErrorMessageFor('Username').should('not.be.visible');\n    cy.getErrorMessageFor('Password').should('not.be.visible');\n  });"
+  },
+  {
+    "id": "410777",
+    "name": "LoginForm Test - Invalid creds show",
+    "type": "CodeFragment",
+    "content": "it('should show invalid username and password message when credentials are invalid', () => {\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('baduser');\n    cy.getInputFor('Password').type('badpassword');\n    cy.get('button').contains('Login').click();\n\n    cy.contains('Bad username or password').should('be.visible');\n  });"
+  },
+  {
+    "id": "466046",
+    "name": "login func",
+    "type": "CodeFragment",
+    "content": "const login = async (username: string, password: string) => {\n    const res = await fetch('/auth', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({ username, password }),\n    });\n    if (res.status === 401) {\n      setErrorMessage('Bad username or password');\n    }\n  };"
+  },
+  {
+    "id": "359846",
+    "name": "cy.intercept 401",
+    "type": "CodeFragment",
+    "content": "cy.intercept('POST', '/auth', {\n      statusCode: 401\n    })"
+  }
+]
