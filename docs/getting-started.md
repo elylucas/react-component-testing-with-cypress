@@ -182,11 +182,9 @@ return (
       aria-errormessage={`error-${props.name}`}
       {...props}
     />
-    {submitted && !props.value && (
-      <span id={`error-${props.name}`} className="error">
-        {requiredMessage}
-      </span>
-    )}
+    <span id={`error-${props.name}`} className="error">
+      {requiredMessage}
+    </span>
   </label>
 );
 ```

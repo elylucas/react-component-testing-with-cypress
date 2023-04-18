@@ -1,5 +1,23 @@
 [
   {
+    "id": "345789",
+    "name": "LoginForm HTML",
+    "type": "CodeFragment",
+    "content": "<form className=\"form\">\n      <fieldset className=\"fieldset\">\n        <legend className=\"legend\">Log In</legend>\n        <label className=\"label\">\n          Login:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-username\"\n          />\n          <span id=\"error-username\" className=\"error\">\n            Login is required\n          </span>\n        </label>\n        <label className=\"label\">\n          Password:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-password\"\n          />\n          <span id=\"error-password\" className=\"error\">\n            Password is required\n          </span>\n        </label>\n        <button type=\"submit\" className=\"button\">\n          Login\n        </button>\n        <div className=\"error\">Bad username or password</div>\n        <div className=\"success\">Welcome username!</div>\n      </fieldset>\n    </form>"
+  },
+  {
+    "id": "489308",
+    "name": "App CSS",
+    "type": "CodeFragment",
+    "content": "#root {\n  max-width: 1280px;\n  margin: 0 auto;\n  padding: 2rem;\n  text-align: center;\n}\n\n.logo {\n  height: 6em;\n  padding: 1.5em;\n  will-change: filter;\n  transition: filter 300ms;\n}\n.logo:hover {\n  filter: drop-shadow(0 0 2em #646cffaa);\n}\n.logo.react:hover {\n  filter: drop-shadow(0 0 2em #61dafbaa);\n}\n\n@keyframes logo-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@media (prefers-reduced-motion: no-preference) {\n  a:nth-of-type(2) .logo {\n    animation: logo-spin infinite 20s linear;\n  }\n}\n\n.card {\n  padding: 2em;\n}\n\n.read-the-docs {\n  color: #888;\n}\n/* Global */\n* {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  line-height: 1.5;\n  font-size: 16px;\n}\n\nbody,\ninput,\nbutton {\n  font-family: 'Montserrat', sans-serif;\n}\n\n:root {\n  --button-text: white;\n  --blue: rgb(73, 86, 227);\n  --blue-light: rgb(73, 86, 227, 0.9);\n  --text-gray: rgb(31, 41, 55);\n  --text-gray-light: rgb(107, 114, 128);\n  --text-gray-lighter: rgb(229, 231, 235);\n  --text-gray-lightest: rgb(249, 250, 251);\n  --text-gray-dark: rgb(31, 41, 55);\n  --text-error: rgb(239, 68, 68);\n  --text-success: rgb(0, 110, 26);\n  --shadow-lg: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px\n      6px -4px rgb(0 0 0 / 0.1);\n}\n\n\n/* Main */\n.container {\n  margin: 2.5rem auto;\n  max-width: 1024px;\n}\n\n/* Button Component */\n.button {\n  cursor: pointer;\n  color: var(--button-text);\n  padding: 0.5rem 1.5rem 0.5rem 1.5rem;\n  background-color: var(--blue);\n  border: solid 2px transparent;\n  border-radius: 0.125rem;\n  align-self: flex-start;\n  font-size: 1.1rem;\n  transition: all 0.2s;\n}\n\n.button:hover {\n  background-color: var(--blue-light);\n}\n\n.button:disabled {\n  opacity: 0.5;\n}\n\n/* Input Field */\n.label {\n  display: flex;\n  flex-direction: column;\n  font-size: 1.125rem;\n  line-height: 1.75rem;\n  color: var(--text-gray-dark);\n  margin-bottom: 20px;\n}\n\n.input {\n  padding: 0.5rem;\n  color: var(--text-gray-light);\n  border: 2px solid var(--text-gray-lighter);\n  font-size: 1.125rem;\n  font-weight: 400;\n  line-height: 1.75rem;\n}\n\n.input:focus {\n  outline: 2px solid transparent;\n  outline-offset: 2px;\n}\n\n.label .error {\n  color: var(--text-error);\n  margin-top: 0.5rem;\n  display: none;\n}\n\n[aria-invalid=\"true\"] ~ .error {\n  display: inline-block;\n}\n\n/* Login Form */\n.legend {\n  color: var(--text-gray-dark);\n  margin-bottom: 1rem;\n  font-size: 1.875rem;\n  line-height: 2.25rem;\n  padding: 0;\n}\n\n.fieldset {\n  border-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n.form {\n  display: flex;\n  flex-direction: column;\n  max-width: 640px;\n  padding: 3rem;\n  margin: 0 auto;\n  background-color: var(--text-gray-lightest);\n  border-radius: 0.375rem;\n  box-shadow: var(--shadow-lg);\n}\n\n.form .error {\n  color: var(--text-error);\n  margin-top: 0.5rem;\n}\n\n.form .success {\n  color: var(--text-success);\n  margin-top: 0.5rem;\n}\n"
+  },
+  {
+    "id": "545302",
+    "name": "Font HTML",
+    "type": "CodeFragment",
+    "content": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />\n    <link\n      href=\"https://fonts.googleapis.com/css2?family=Montserrat&display=swap\"\n      rel=\"stylesheet\"\n    />"
+  },
+  {
     "id": "328512",
     "name": "Button Test - uses custom text",
     "type": "CodeFragment",
@@ -9,13 +27,13 @@
     "id": "489329",
     "name": "Button test - onclick should be called",
     "type": "CodeFragment",
-    "content": "it('when button is clicked, onClickx should be called', () => {\n    cy.mount(<Button>Click me!</Button>);\n  });"
+    "content": "it('when button is clicked, onClick should be called', () => {\n    cy.mount(<Button>Click me!</Button>);\n  });"
   },
   {
     "id": "401607",
     "name": "LoginForm - button exists",
     "type": "CodeFragment",
-    "content": "it('form should have button with login text', () => {\n    cy.mount(<LoginForm />);\n    \n  });"
+    "content": "it('form should have button with login text', () => {\n    cy.mount(<LoginForm />);\n    cy.get('button').contains('Login');    \n  });"
   },
   {
     "id": "503127",
@@ -57,19 +75,19 @@
     "id": "300370",
     "name": "onChangeSpy check",
     "type": "CodeFragment",
-    "content": "cy.get('@onChangeSpy').should((spy: any) => {\n      const args = spy.getCall(0).args;\n      expect(args[0].target.value).to.equal('abc123');\n    });"
-  },
-  {
-    "id": "506432",
-    "name": "LoginForm Test - form should have inputs",
-    "type": "CodeFragment",
-    "content": "it('form should have username and password inputs', () => {\n    cy.mount(<LoginForm />);\n    cy.get('input[type=text]')\n      .should('have.attr', 'name')\n      .and('equal', 'username');\n    cy.get('input[type=password]')\n      .should('have.attr', 'name')\n      .and('equal', 'password');\n  });"
+    "content": "cy.get<sinon.SinonSpy>('@onChangeSpy').should((spy) => {\n      const args = spy.getCall(0).args;\n      expect(args[0].target.value).to.equal('abc123');\n    });"
   },
   {
     "id": "349115",
     "name": "Add InputFields to form",
     "type": "CodeFragment",
     "content": "<InputField\n          name=\"username\"\n          label=\"Username\"\n          requiredMessage=\"Username is required\"\n          type=\"text\"\n          submitted={false}\n        />\n        <InputField\n          name=\"password\"\n          label=\"Password\"\n          requiredMessage=\"Password is required\"\n          type=\"password\"\n          submitted={false}\n        />"
+  },
+  {
+    "id": "506432",
+    "name": "LoginForm Test - form should have inputs",
+    "type": "CodeFragment",
+    "content": "it('form should have username and password inputs', () => {\n    cy.mount(<LoginForm />);\n    cy.get('input[type=text]')\n      .should('have.attr', 'name')\n      .and('equal', 'username');\n    cy.get('input[type=password]')\n      .should('have.attr', 'name')\n      .and('equal', 'password');\n  });"
   },
   {
     "id": "523097",
@@ -111,6 +129,6 @@
     "id": "492315",
     "name": "LoginForm Test - should show welcome msg",
     "type": "CodeFragment",
-    "content": "  it('should show welcome message when credentials are valid', () => {\n    cy.intercept('POST', '/auth', {\n      statusCode: 200,\n    });\n\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    cy.contains('Welcome testuser!').should('be.visible');\n  });"
+    "content": "it('should show welcome message when credentials are valid', () => {\n    cy.intercept('POST', '/auth', {\n      statusCode: 200,\n    });\n\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    cy.contains('Welcome testuser!').should('be.visible');\n  });"
   }
 ]
