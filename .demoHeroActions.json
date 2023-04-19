@@ -3,7 +3,7 @@
     "id": "345789",
     "name": "LoginForm HTML",
     "type": "CodeFragment",
-    "content": "<form className=\"form\">\n      <fieldset className=\"fieldset\">\n        <legend className=\"legend\">Log In</legend>\n        <label className=\"label\">\n          Login:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-username\"\n          />\n          <span id=\"error-username\" className=\"error\">\n            Login is required\n          </span>\n        </label>\n        <label className=\"label\">\n          Password:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-password\"\n          />\n          <span id=\"error-password\" className=\"error\">\n            Password is required\n          </span>\n        </label>\n        <button type=\"submit\" className=\"button\">\n          Login\n        </button>\n        {/* <div className=\"error\">Bad username or password</div> */}\n        {/* <div className=\"success\">Welcome username!</div> */}\n      </fieldset>\n    </form>"
+    "content": "<form className=\"form\">\n      <fieldset className=\"fieldset\">\n        <legend className=\"legend\">Log In</legend>\n        <label className=\"label\">\n          Login:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-username\"\n          />\n          <span id=\"error-username\" className=\"error\">\n            Login is required\n          </span>\n        </label>\n        <label className=\"label\">\n          Password:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-password\"\n          />\n          <span id=\"error-password\" className=\"error\">\n            Password is required\n          </span>\n        </label>\n        <button type=\"submit\" className=\"button\">\n          Login\n        </button>\n        {/* <div className=\"error\">Bad username or password</div> */}\n      </fieldset>\n    </form>"
   },
   {
     "id": "489308",
@@ -127,8 +127,8 @@
   },
   {
     "id": "492315",
-    "name": "LoginForm Test - should show welcome msg",
+    "name": "LoginForm Test - should redirect on valid login",
     "type": "CodeFragment",
-    "content": "it('should show welcome message when credentials are valid', () => {\n    cy.intercept('POST', '/auth', {\n      statusCode: 200,\n    });\n\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    cy.contains('Welcome testuser!').should('be.visible');\n  });"
+    "content": "it('should show welcome message when credentials are valid', () => {\n    cy.intercept('POST', '/auth', {\n      statusCode: 200,\n    });\n\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    //test redirect happened...\n\n  });"
   }
 ]

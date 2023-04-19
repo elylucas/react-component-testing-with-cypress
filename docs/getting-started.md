@@ -543,7 +543,7 @@ cy.intercept('POST', '/auth', {
 
 ### 4th Login Form test
 
-Welcome message should show when credentials are valid
+When creds are valid, user should be redirected to home page
 
 Add Test:
 
@@ -563,23 +563,59 @@ it('should show welcome message when credentials are valid', () => {
 });
 ```
 
-Add isAuthed state, update login to handle 201:
+import useNavigation from react-router-dom in LoginForm.tsx and use it on
+successful login:
 
 ```tsx
-const [isAuthed, setIsAuthed] = useState(false);
+import { useNavigate } from 'react-router-dom';
+```
 
-//handlesubmit under setErrorMessage
-setIsAuthed(false);
+```tsx
+const navigate = useNavigate();
 
 //in login
 if (res.status === 200) {
-  setIsAuthed(true);
-}
-
-//in jsx
-{
-  isAuthed && <div className={styles.success}>Welcome {username}!</div>;
+  navigate('/home');
 }
 ```
 
-Show test pass
+Show test fails as there is no router provider context.
+
+Rename component.ts to component.tsx so we can use JSX in it, then update mount
+method to use MemoryRouter provider in component.tsx:
+
+```tsx
+Cypress.Commands.add('mount', (jsx) => {
+  return mount(<MemoryRouter>{jsx}</MemoryRouter>);
+});
+```
+
+Use DI to inject useNavigate method into component via prop.
+
+alias useNavigate to \_useNavigate
+
+update interface:
+
+```tsx
+interface LoginFormProps {
+  useNavigate?: typeof _useNavigate;
+}
+```
+
+add prop:
+
+```tsx
+const LoginForm: React.FC<LoginFormProps> = ({ useNavigate = _useNavigate }) => 
+```
+
+add spy and test it was called:
+
+```tsx
+const navigateSpy = cy.spy().as('navigateSpy')
+
+cy.mount(<LoginForm useNavigate={() => navigateSpy} />);
+
+/// after actions
+
+
+```
