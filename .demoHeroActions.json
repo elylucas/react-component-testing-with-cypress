@@ -130,5 +130,11 @@
     "name": "LoginForm Test - should redirect on valid login",
     "type": "CodeFragment",
     "content": "it('should show welcome message when credentials are valid', () => {\n    cy.intercept('POST', '/auth', {\n      statusCode: 200,\n    });\n\n    cy.mount(<LoginForm />);\n\n    cy.getInputFor('Username').type('testuser');\n    cy.getInputFor('Password').type('testpassword');\n    cy.get('button').contains('Login').click();\n\n    //test redirect happened...\n\n  });"
+  },
+  {
+    "id": "552933",
+    "name": "Custom Mount Command",
+    "type": "CodeFragment",
+    "content": "Cypress.Commands.add('mount', (jsx) => {\n  return mount(<MemoryRouter>{jsx}</MemoryRouter>);\n});"
   }
 ]
