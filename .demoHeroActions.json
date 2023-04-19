@@ -3,7 +3,7 @@
     "id": "345789",
     "name": "LoginForm HTML",
     "type": "CodeFragment",
-    "content": "<form className=\"form\">\n      <fieldset className=\"fieldset\">\n        <legend className=\"legend\">Log In</legend>\n        <label className=\"label\">\n          Login:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-username\"\n          />\n          <span id=\"error-username\" className=\"error\">\n            Login is required\n          </span>\n        </label>\n        <label className=\"label\">\n          Password:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-password\"\n          />\n          <span id=\"error-password\" className=\"error\">\n            Password is required\n          </span>\n        </label>\n        <button type=\"submit\" className=\"button\">\n          Login\n        </button>\n        <div className=\"error\">Bad username or password</div>\n        <div className=\"success\">Welcome username!</div>\n      </fieldset>\n    </form>"
+    "content": "<form className=\"form\">\n      <fieldset className=\"fieldset\">\n        <legend className=\"legend\">Log In</legend>\n        <label className=\"label\">\n          Login:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-username\"\n          />\n          <span id=\"error-username\" className=\"error\">\n            Login is required\n          </span>\n        </label>\n        <label className=\"label\">\n          Password:\n          <input\n            type=\"text\"\n            className=\"input\"\n            aria-invalid=\"false\"\n            aria-errormessage=\"error-password\"\n          />\n          <span id=\"error-password\" className=\"error\">\n            Password is required\n          </span>\n        </label>\n        <button type=\"submit\" className=\"button\">\n          Login\n        </button>\n        {/* <div className=\"error\">Bad username or password</div> */}\n        {/* <div className=\"success\">Welcome username!</div> */}\n      </fieldset>\n    </form>"
   },
   {
     "id": "489308",
@@ -21,7 +21,7 @@
     "id": "328512",
     "name": "Button Test - uses custom text",
     "type": "CodeFragment",
-    "content": "it('uses custom text for the button label', () => {\n\n  });"
+    "content": "it('uses custom text for the button label', () => {\n    cy.mount(<Button />);  \n  });"
   },
   {
     "id": "489329",
