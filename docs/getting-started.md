@@ -13,7 +13,7 @@ To get started, clone the repo and install the dependencies:
 ## Clone Repo and
 
 ```bash
-git clone git@github.com:elylucas/react-component-testing-with-cypress.git
+git clone https://github.com/elylucas/react-component-testing-with-cypress.git
 ```
 
 ## Install Dependencies
