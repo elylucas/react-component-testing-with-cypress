@@ -563,7 +563,7 @@ it('should show welcome message when credentials are valid', () => {
 });
 ```
 
-import useNavigation from react-router-dom in LoginForm.tsx and use it on
+Import useNavigation from react-router-dom in LoginForm.tsx and use it on
 successful login:
 
 ```tsx
