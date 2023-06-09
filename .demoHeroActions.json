@@ -36,6 +36,12 @@
     "content": "it('form should have button with login text', () => {\n    cy.mount(<LoginForm />);\n    cy.get('button').contains('Login');    \n  });"
   },
   {
+    "id": "347731",
+    "name": "InputField Test - uses custom text",
+    "type": "CodeFragment",
+    "content": "it('uses custom text for input label', () => { \n    cy.mount(\n      <InputField label=\"Username\" requiredMessage=\"Username is required\" />\n    ); \n    \n  })"
+  },
+  {
     "id": "503127",
     "name": "InputField Test - show show error",
     "type": "CodeFragment",
@@ -136,5 +142,11 @@
     "name": "Custom Mount Command",
     "type": "CodeFragment",
     "content": "Cypress.Commands.add('mount', (jsx) => {\n  return mount(<MemoryRouter>{jsx}</MemoryRouter>);\n});"
+  },
+  {
+    "id": "423075",
+    "name": "mount with navigateSpy",
+    "type": "CodeFragment",
+    "content": "const navigateSpy = cy.spy().as('navigateSpy');\n\n    cy.mount(<LoginForm useNavigate={() => navigateSpy} />);"
   }
 ]
